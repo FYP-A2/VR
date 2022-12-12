@@ -766,8 +766,8 @@ GameObject:
   - component: {fileID: 8555443243182160294}
   - component: {fileID: 8555443243182160295}
   m_Layer: 0
-  m_Name: Boss
-  m_TagString: Untagged
+  m_Name: MiniBoss
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -865,6 +865,7 @@ MonoBehaviour:
   hp: 100
   fireEffect: {fileID: 7235820238106882273}
   freezeEffect: {fileID: 3298715619110415475}
+  spawn: {fileID: 0}
 --- !u!1 &8555443244258375179
 GameObject:
   m_ObjectHideFlags: 0

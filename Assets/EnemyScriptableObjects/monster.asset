@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a0c6c5ff166984bb56385258fb3cd9, type: 3}
   m_Name: monster
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   damage: 10
+  animSpeed: 1
   baseOffset: -0.4
   speed: 2
   angularSpeed: 720

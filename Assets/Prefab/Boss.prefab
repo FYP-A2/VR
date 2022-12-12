@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 4251693748726732878}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,6 +534,7 @@ MonoBehaviour:
   hp: 100
   fireEffect: {fileID: 495337010495254821}
   freezeEffect: {fileID: 7272928512518563054}
+  spawn: {fileID: 0}
 --- !u!1001 &6395254281600481500
 PrefabInstance:
   m_ObjectHideFlags: 0

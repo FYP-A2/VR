@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 4273048825533638418}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1820,6 +1820,7 @@ MonoBehaviour:
   hp: 100
   fireEffect: {fileID: 4400857515576267819}
   freezeEffect: {fileID: 2183790903767454528}
+  spawn: {fileID: 0}
 --- !u!195 &4273048825533638380
 NavMeshAgent:
   m_ObjectHideFlags: 0
