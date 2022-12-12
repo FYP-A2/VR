@@ -70,9 +70,10 @@ public class Arrow : MonoBehaviour
 
             shot = false;
 
-            transform.SetParent(collision.transform);
+            
             rb.isKinematic = true;
             rb.useGravity = false;
+            transform.SetParent(collision.transform);
             transform.GetChild(0).gameObject.SetActive(false);
         }
         else if (collision.gameObject.tag == "Scene")
@@ -84,9 +85,10 @@ public class Arrow : MonoBehaviour
 
             shot = false;
 
-            transform.SetParent(collision.transform);
+            
             rb.isKinematic = true;
             rb.useGravity = false;
+            transform.SetParent(collision.transform);
             transform.GetChild(0).gameObject.SetActive(false);
         }
 
