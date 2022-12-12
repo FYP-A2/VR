@@ -8,13 +8,14 @@ public class SpawnManager : MonoBehaviour
     Vector3 randomPos,min,max;
     [SerializeField] Transform player;
     [SerializeField] GameObject monsterPrefab;
+    [SerializeField] GameObject miniBossPrefab;
     [SerializeField] GameObject bossPrefab;
     int monsterCount, bossCount;
     public int count;
     float spawnDelay;
     bool spawned, bossSpawned, minibossSpawned;
     [SerializeField] Terrain terrain;
-    public float gameTime;
+    public float gameTime, boostCount, boost = 1.1f;
     public bool start;
     RaycastHit hit;
 
@@ -22,7 +23,8 @@ public class SpawnManager : MonoBehaviour
     {
         min = terrain.terrainData.bounds.min + terrain.GetPosition();
         max = terrain.terrainData.bounds.max + terrain.GetPosition();
-        start= true;
+        start= false;
+        bossCount = 0;
     }
     private void Update()
     {
@@ -52,7 +54,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     if (Random.Range(0, 100) < 50)
                     {
-                        Spawn(bossPrefab);
+                        Spawn(miniBossPrefab);
                         count++;
                         Debug.Log(count);
                     }
@@ -66,13 +68,38 @@ public class SpawnManager : MonoBehaviour
                     Invoke("ResetSpawn", Random.Range(5, 10));
                 }
             }
-            if (gameTime > 300 && gameTime < 300.1f) {
-                if (!bossSpawned)
+
+            if(gameTime > 180 && gameTime < 181)
+            {
+                if (!minibossSpawned)
                 {
-                    Spawn(bossPrefab);
-                    bossSpawned = true;
+                    Spawn(miniBossPrefab);
+                    minibossSpawned = true;
                 }
             }
+
+            if (gameTime > 300 && gameTime < 301f) {
+                if (!bossSpawned)
+                {
+                    randomPos = new Vector3(Random.Range(player.position.x - 50, player.position.x + 50), max.y, Random.Range(player.position.z - 50, player.position.z + 50));
+                    if (Physics.Linecast(randomPos, new Vector3(randomPos.x, -1f, randomPos.z), out hit))
+                    {
+                        Debug.Log("BossWork" + gameTime);
+                        if (hit.collider.name.Equals("terrain"))
+                        {
+                            bossPrefab.transform.position = hit.point;
+                            bossPrefab.SetActive(true);
+                            bossSpawned = true;
+                            gameTime = 0;
+                            bossSpawned = false;
+                            minibossSpawned = false;
+                            boostCount++;
+                            boost *= boost;
+                        }
+                    }                   
+                }
+            }
+            
         }
     }
     public void SpawnEnemy(int monsterNo, int bossNo)
@@ -84,7 +111,7 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < bossNo; i++)
         {
-            Spawn(bossPrefab);
+            Spawn(miniBossPrefab);
         }
     }
 
@@ -95,12 +122,16 @@ public class SpawnManager : MonoBehaviour
         randomPos = new Vector3(Random.Range(player.position.x-100,player.position.x+100),max.y,Random.Range(player.position.z-100,player.position.z+100));
         if (Physics.Linecast(randomPos, new Vector3(randomPos.x, -1f, randomPos.z), out hit))
         {
-              Debug.Log("work" + gameTime);
-              Instantiate(prefab, hit.point, Quaternion.identity);
-              bossCount++;
+            Debug.Log("spawnWork" + gameTime);
+            if (hit.collider.name.Equals("terrain") && Vector3.Distance(player.position,hit.point) > 50)
+            {
+                Instantiate(prefab, hit.point, Quaternion.identity);
+                bossCount++;
+            }
+            else
+                Spawn(prefab);
         }
-        else
-            Spawn(prefab);  
+            
     }
 
     void ResetSpawn()
