@@ -71,19 +71,6 @@ public class Monster : MonoBehaviour
             agent.SetDestination(transform.position);
 
         OnFreeze();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hp -= 10;
-            this.slider.value = hp;
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeFire(5);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TakeFreeze(5);
-        }
     }
 
     void Move()
@@ -102,7 +89,7 @@ public class Monster : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("Attack");  
             Debug.Log(this.name + "Hit");
-            //player.GetComponent<Player>().TakeDamage(damage);
+            player.GetComponent<Player>().TakeDamage(damage);
             attacked = true;
             Invoke("ResetAttack", attackDelay);
         }

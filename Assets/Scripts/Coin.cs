@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            other.transform.parent.GetComponent<Inventory>().AddCoin(Random.Range(1,6));
             Destroy(this.gameObject);
         }
     }

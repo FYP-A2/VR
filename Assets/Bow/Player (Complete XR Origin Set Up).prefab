@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2747258925919260593}
   - component: {fileID: 2251957992993061393}
+  - component: {fileID: 8711453820377907153}
   m_Layer: 0
   m_Name: Player (Complete XR Origin Set Up)
   m_TagString: Player
@@ -523,6 +524,20 @@ MonoBehaviour:
   arrowCount: 0a0000001e0000000200000002000000
   HealthPotionCount: 3
   ui: {fileID: 8424287143108595939}
+--- !u!114 &8711453820377907153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8809003595414431279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315b78aed2d0bfc48bbfe6d67d63c612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  speed: 1
 --- !u!1001 &2251957992620073622
 PrefabInstance:
   m_ObjectHideFlags: 0

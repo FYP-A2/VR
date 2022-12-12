@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class coinarea : MonoBehaviour
 {
     public int getmoney=0;
     public GameObject ev;
     public List<Shop> shop;
+    public Text gmoneyDisplay;
 
 
     public void OnTriggerEnter(Collider collider) {
@@ -26,6 +28,7 @@ public class coinarea : MonoBehaviour
             Destroy(collider.gameObject, 1.5f);
         }
         Debug.Log(getmoney);
+        gmoneyDisplay.text = "$" + getmoney;
     }
 
     public int FindItem(string x)
@@ -40,7 +43,9 @@ public class coinarea : MonoBehaviour
             }
             else number = -1;
         }
+        gmoneyDisplay.text = "$" + getmoney;
         return number;
+
     }
 
     public void sell(string x) {
@@ -64,6 +69,7 @@ public class coinarea : MonoBehaviour
 
         }
         else Debug.Log("No that Item");
+        gmoneyDisplay.text = "$" + getmoney;
     }
 
 }

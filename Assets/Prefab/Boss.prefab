@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 534226014528574119}
   - component: {fileID: 7863462094637634437}
   - component: {fileID: 4251693748726732878}
+  - component: {fileID: 7601965179488876519}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Monster
@@ -535,6 +536,19 @@ MonoBehaviour:
   fireEffect: {fileID: 495337010495254821}
   freezeEffect: {fileID: 7272928512518563054}
   spawn: {fileID: 0}
+--- !u!65 &7601965179488876519
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084580591030979902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.305786, y: 5.0516987, z: 3.4624023}
+  m_Center: {x: -0.018493652, y: 2.98, z: -0.41793823}
 --- !u!1001 &6395254281600481500
 PrefabInstance:
   m_ObjectHideFlags: 0

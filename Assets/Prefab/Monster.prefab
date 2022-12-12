@@ -1756,6 +1756,7 @@ GameObject:
   - component: {fileID: 4273048825533638381}
   - component: {fileID: 4273048825533638380}
   - component: {fileID: 4273048825533638418}
+  - component: {fileID: 3801637302213850624}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -1857,6 +1858,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 8080937549203066630, guid: 967b6e4c57ed291448e4bf5be85e7f2b, type: 3}
   mineral: {fileID: 1880896281425560478, guid: f9a16a4408d01dd49ae57fba7bc4b04d, type: 3}
+--- !u!65 &3801637302213850624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273048824704838408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.55, y: 1.8, z: 1}
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!1 &4273048824704839092
 GameObject:
   m_ObjectHideFlags: 0

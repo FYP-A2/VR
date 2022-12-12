@@ -13,8 +13,10 @@ public class spon : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            getCoin();
+            StartCoroutine(getCoin());
             ev.GetComponent<coinarea>().getmoney=0;
+
+            Debug.Log("enter shop");
         }
         if (collider.gameObject.tag == "Money_1")
         {
@@ -51,6 +53,7 @@ public class spon : MonoBehaviour
     IEnumerator getCoin()
     {
         money = even.GetComponent<Inventory>().coins;
+        Debug.Log("money "+ money);
         for (int x=0;x<10;x++) {
             if (money >= 1)
             {

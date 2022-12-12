@@ -14,6 +14,7 @@ public class GameUI1 : MonoBehaviour
     public Text coinCount;
     public static int selectedArrowType = 0;
     public Bow bow;
+    public Player player;
 
     public void SetArrowCount(int arrow,int tp, int fire, int freeze)
     {
@@ -42,5 +43,12 @@ public class GameUI1 : MonoBehaviour
     {
         selectedArrowType = type;
         bow.SetArrow();
+    }
+
+    public void Healing()
+    {
+        player.health += 50;
+        if (player.health > 200)
+            player.health = 200;
     }
 }

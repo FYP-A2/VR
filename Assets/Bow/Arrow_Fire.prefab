@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: 0
-  damage: 10
+  damage: 40
   arrowType: 2
   rb: {fileID: 0}
   teleportPlayer: {fileID: 0}
