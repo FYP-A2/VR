@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Monster
   - Scene
+  - Money_10
+  - Money_100
+  - Money_1
+  - Shop
   layers:
   - Default
   - TransparentFX

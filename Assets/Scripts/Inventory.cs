@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public float coins;
+    public int coins;
     public GameObject[] ArrowPrefab;
     public int[] arrowCount = new int[4];
     public int HealthPotionCount;

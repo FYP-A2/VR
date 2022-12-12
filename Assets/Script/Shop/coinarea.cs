@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class coinarea : MonoBehaviour
 {
-    int getmoney=0;
+    public int getmoney=0;
     public GameObject ev;
     public List<Shop> shop;
 
@@ -51,24 +51,19 @@ public class coinarea : MonoBehaviour
             {
                 getmoney -= shop[number].price;
                 Debug.Log("You buy " + shop[number].name);
-                Debug.Log(getmoney);
+                ev.GetComponent<Inventory>().AddCoin(-shop[number].price);
+                switch (shop[number].name) {
+                    case "Arrow": ev.GetComponent<Inventory>().AddArrow(1); break;
+                    case "Fire Arrow": ev.GetComponent<Inventory>().AddFireArrow(1); break;
+                    case "Frezze Arrow": ev.GetComponent<Inventory>().AddFreezeArrow(1); break;
+                    case "Teleport Arrow": ev.GetComponent<Inventory>().AddTpArrow(1); break;
+                    case "Potion": ev.GetComponent<Inventory>().AddHealing(1); break;
+                }
             }
             else Debug.Log("No money");
 
         }
         else Debug.Log("No that Item");
     }
-
-    public void givebackmoney() {
-        if (getmoney != 0)
-        {
-            ev.GetComponent<spon>().updatamoney(getmoney);
-            Debug.Log("give back u "+ getmoney);
-            getmoney = 0;
-        }
-        else Debug.Log("No money give back u");
-        
-    }
-
 
 }

@@ -4,24 +4,53 @@ using UnityEngine;
 
 public class spon : MonoBehaviour
 {
-    public GameObject Coin100, Coin10, Coin1;
+    public GameObject Coin100, Coin10, Coin1,even,ev;
+    public List<GameObject> Coin;
     public int money;
     public Vector3 place;
-    void Start()
+
+    public void OnTriggerEnter(Collider collider)
     {
-        StartCoroutine(getCoin());
-    }
-    public void click()
-    {
-    StartCoroutine(getCoin());
+        if (collider.gameObject.tag == "Player")
+        {
+            getCoin();
+            ev.GetComponent<coinarea>().getmoney=0;
+        }
+        if (collider.gameObject.tag == "Money_1")
+        {
+            Coin.Add(collider.gameObject);
+        }
+        else if (collider.gameObject.tag == "Money_10")
+        {
+            Coin.Add(collider.gameObject);
+        }
+        else if (collider.gameObject.tag == "Money_100")
+        {
+            Coin.Add(collider.gameObject);
+        }
     }
 
-    public void updatamoney(int x) {
-        money += x;
+    public void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player")
+            ClearCoin();
     }
+
+    public void ClearCoin() {
+        GameObject[] gameObjects = null;
+        Coin.CopyTo(gameObjects);
+        Coin.Clear();
+        foreach (GameObject co in gameObjects)
+        {
+            if (co != null)
+                Destroy(co);
+        }
+    }
+
 
     IEnumerator getCoin()
     {
+        money = even.GetComponent<Inventory>().coins;
         for (int x=0;x<10;x++) {
             if (money >= 1)
             {
