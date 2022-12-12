@@ -56,16 +56,16 @@ public class Arrow : MonoBehaviour
             switch (arrowType)
             {
                 case ArrowType.Normal:
-                    m.TakeDamage(damage);
+                    m.TakeDamage((int)damage);
                     break;
                 case ArrowType.Teleport:
                     teleportPlayer.transform.position = transform.position;
                     break;
                 case ArrowType.Fire:
-                    m.TakeFire(damage);
+                    m.TakeFire((int)damage);
                     break;
                 case ArrowType.Freeze:
-                    m.TakeFreeze(damage);
+                    m.TakeFreeze((int)damage);
                     break;
             }
 
