@@ -13,41 +13,18 @@ public class coinarea : MonoBehaviour
         if (collider.gameObject.tag == "Money_1")
         {
             getmoney += 1;
-            Destroy(collider.gameObject, 0);
+            Destroy(collider.gameObject, 1.5f);
+        }
+        else if (collider.gameObject.tag == "Money_10")
+        {
+            getmoney += 10;
+            Destroy(collider.gameObject,1.5f);
         }
         else if (collider.gameObject.tag == "Money_100")
         {
             getmoney += 100;
-            Destroy(collider.gameObject, 0);
+            Destroy(collider.gameObject, 1.5f);
         }
-        else if (collider.gameObject.tag == "Money_10000")
-        {
-            getmoney += 10000;
-            Destroy(collider.gameObject, 0);
-        }
-        Debug.Log(getmoney);
-    }
-
-
-    void OnCollisionStay(Collision collisionInfo)
-    {
-        // Debug-draw all contact points and normals
-        foreach (ContactPoint contact in collisionInfo.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal * 10, Color.white);
-        }
-    }
-
-
-
-
-    void OnTriggerExit(Collider collider) {
-        if (collider.gameObject.tag == "Money_1")
-            getmoney -= 1;
-        else if (collider.gameObject.tag == "Money_100")
-            getmoney -= 100;
-        else if (collider.gameObject.tag == "Money_10000")
-            getmoney -= 10000;
         Debug.Log(getmoney);
     }
 
