@@ -17,6 +17,7 @@ public class Monster : MonoBehaviour
     Animator animator;
     Drop drop;
     public ParticleSystem fireEffect,freezeEffect;
+    public SpawnManager spawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,40 +25,51 @@ public class Monster : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         drop = GetComponent<Drop>();
         animator = GetComponent<Animator>();
+        spawn = GameObject.Find("Spawn").GetComponent<SpawnManager>();
         AgentConfig();
-        hp = enemyScriptable.health;
+        if (spawn.boostCount > 0)
+            hp = (int)(enemyScriptable.health * spawn.boost);
+        else
+            hp = enemyScriptable.health;
         damage = enemyScriptable.damage;
         this.slider.minValue = 0;
-        this.slider.maxValue=hp;
+        this.slider.maxValue= hp;
         this.slider.value = slider.maxValue;
         attackRange = enemyScriptable.radius * 2;
         animator.speed = enemyScriptable.animSpeed;
+        animator.Rebind();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0f)
+        if (spawn.start)
         {
-            Dead();
-        }
-        else
-        {
-            inAttackRange = Vector3.Distance(transform.position, player.position) < attackRange;
-            //Debug.Log(inAttackRange);
-            if (inAttackRange)
+            if (hp <= 0f)
             {
-                agent.SetDestination(transform.position);
-                transform.LookAt(new Vector3(player.position.x, player.position.y - 1, player.position.z));
-                if (animator != null)
-                    animator.SetBool("Move", false);
-                Attack();
+                Dead();
             }
             else
             {
-                Move();
+                inAttackRange = Vector3.Distance(transform.position, player.position) < attackRange;
+                //Debug.Log(inAttackRange);
+                if (inAttackRange)
+                {
+                    agent.SetDestination(transform.position);
+                    transform.LookAt(new Vector3(player.position.x, player.position.y - 1, player.position.z));
+                    if (animator != null)
+                        animator.SetBool("Move", false);
+                    Attack();
+                }
+                else
+                {
+                    Move();
+                }
             }
         }
+        else
+            agent.SetDestination(transform.position);
+
         OnFreeze();
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -114,8 +126,18 @@ public class Monster : MonoBehaviour
 
     void Dead()
     {
-        Destroy(this.gameObject);
-        drop.DropLoot();
+        if (this.gameObject.name.Equals("Boss"))
+        {
+            this.gameObject.SetActive(false);
+            this.Start();
+            drop.DropLoot();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+            drop.DropLoot();
+        }
+        
     }
 
     void AgentConfig()
