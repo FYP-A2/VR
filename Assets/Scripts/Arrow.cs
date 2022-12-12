@@ -48,35 +48,48 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Inside other: " + collision.gameObject.name);
         if (!shot) { return; }
-
-        else if (collision.gameObject.CompareTag("Monster"))
+        else if (collision.gameObject.tag == "Monster")
         {
-            //Monster m = collision.gameObject.GetComponent<Monster>();
-            //switch (arrowType)
-            //{
-            //    case ArrowType.Normal:
-            //        m.TakeDamage(damage);
-            //        break;
-            //    case ArrowType.Teleport:
-            //        teleportPlayer.transform.position = transform.position;
-            //        break;
-            //    case ArrowType.Fire:
-            //        m.TakeFire(damage);
-            //        break;
-            //    case ArrowType.Freeze:
-            //        m.TakeFreeze(damage);
-            //        break;
-            //}
+            Monster m = collision.gameObject.GetComponent<Monster>();
+            switch (arrowType)
+            {
+                case ArrowType.Normal:
+                    m.TakeDamage(damage);
+                    break;
+                case ArrowType.Teleport:
+                    teleportPlayer.transform.position = transform.position;
+                    break;
+                case ArrowType.Fire:
+                    m.TakeFire(damage);
+                    break;
+                case ArrowType.Freeze:
+                    m.TakeFreeze(damage);
+                    break;
+            }
 
             shot = false;
+
+            transform.SetParent(collision.transform);
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
-        else if (collision.gameObject.CompareTag("Scene"))
+        else if (collision.gameObject.tag == "Scene")
         {
             if (arrowType == ArrowType.Teleport)
                 teleportPlayer.transform.position = transform.position;
 
+            Debug.Log("Tp");
+
             shot = false;
+
+            transform.SetParent(collision.transform);
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
+
     }
 }

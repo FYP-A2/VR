@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
+    public float bowPower = 50f;
+
     public Transform holdStringObjectOrigin;
     public Transform holdStringObject;
     public Arrow arrow;
@@ -48,15 +50,16 @@ public class Bow : MonoBehaviour
     {
         if (arrow != null)
             Destroy(arrow.gameObject);
-        Debug.Log(GameUI1.selectedArrowType);
+
         arrow = inventory.GetArrow(GameUI1.selectedArrowType);
-        Debug.Log("bow arrow" + (arrow != null));
-        Debug.Log("holdStringObject" + (holdStringObject != null));
-        arrow.transform.SetParent(holdStringObject);
-        arrow.transform.localPosition = new Vector3 (0, 0, 4f);
-        arrow.transform.localRotation = new Quaternion (0, 0, 0, 0);
-        if (arrow.arrowType == Arrow.ArrowType.Teleport)
-            arrow.teleportPlayer = player;
+        if (arrow != null)
+        {
+            arrow.transform.SetParent(holdStringObject);
+            arrow.transform.localPosition = new Vector3(0, 0, 4f);
+            arrow.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            if (arrow.arrowType == Arrow.ArrowType.Teleport)
+                arrow.teleportPlayer = player;
+        }
     }
 
 
@@ -71,7 +74,7 @@ public class Bow : MonoBehaviour
             Vector3 velocity = transform.position - holdStringObjectOrigin.position;
             velocity.Normalize();
             velocity *= Vector3.Distance(holdStringObjectOrigin.position, holdStringObject.position);
-            arrow.Shot(velocity*30);
+            arrow.Shot(velocity* bowPower);
             
             inventory.arrowCount[GameUI1.selectedArrowType] -= 1;
             arrow = null;
