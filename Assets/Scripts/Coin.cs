@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // PURPOSE: When coin hit player, coin destroyed.
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

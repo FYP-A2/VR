@@ -18,34 +18,18 @@ public class Bow : MonoBehaviour
     public Transform player;
     public Inventory inventory;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetArrow();
-    }
+    
+    void Start() { SetArrow(); }
 
-    // Update is called once per frame
     void Update()
     {
-        if (holdStringObjectOrigin.childCount <= 0 && !holdingString)
-        {
-            holdingString = true;
-        }
+        if (holdStringObjectOrigin.childCount <= 0 && !holdingString) { holdingString = true; }
 
-
-        if (holdStringObjectOrigin.childCount > 0 && holdingString)
-        {
-            holdingString = false;
-            ReleaseString();
-        }
-
-        //if (releaseString)
-
-        
-
-
+        if (holdStringObjectOrigin.childCount > 0 && holdingString) { holdingString = false; ReleaseString(); }
     }
 
+
+    // PURPOSE: Set Arrow as child of the "holdStringObject",reset pos of it.
     public void SetArrow()
     {
         if (arrow != null)
@@ -62,7 +46,8 @@ public class Bow : MonoBehaviour
         }
     }
 
-
+    // PURPOSE: Release arrow from "holdStringObject" parenting, calculate velocity & 
+    // PURPOSE: apply arrow.Shot()v*Power. Finally reset the holdStringObject.
     void ReleaseString()
     {
         

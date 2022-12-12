@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Arrow : MonoBehaviour
 {
+    #region Declaration
+
     public bool shot = false;
     public float damage = 10;
     public enum ArrowType { Normal = 0, Teleport = 1, Fire = 2, Freeze = 3}
@@ -16,19 +18,13 @@ public class Arrow : MonoBehaviour
     public Rigidbody rb;
     public Transform teleportPlayer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        HoldingArrow();
-    }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Start() { rb = GetComponent<Rigidbody>(); HoldingArrow(); }
 
+    void Update() { }
+
+    // PURPOSE: Change arrow's velocity. Makes it move.
     public void Shot(Vector3 velocity)
     {
         Debug.Log("arrow velo " + velocity);
@@ -39,6 +35,7 @@ public class Arrow : MonoBehaviour
         shot = true;
     }
 
+    // PURPOSE: Stay arrow in hands. Makes it stop.
     public void HoldingArrow()
     {
         rb.isKinematic = true;
@@ -46,6 +43,8 @@ public class Arrow : MonoBehaviour
         shot = false;
     }
 
+    // PURPOSE: On collision,if shot monster successfully, the monster.monster is got, it takes dmg/effects.
+    // PURPOSE: if shot Scene successfully, our rb(the player) TP.
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Inside other: " + collision.gameObject.name);

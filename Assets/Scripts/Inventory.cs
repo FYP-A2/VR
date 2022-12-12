@@ -40,33 +40,33 @@ public class Inventory : MonoBehaviour
             return null;
     }
 
-    public void AddArrow(int n)
+    public void AddArrow(int boughtAmount)
     {
-        arrowCount[0] += n;
+        arrowCount[0] += boughtAmount;
     }
 
-    public void AddTpArrow(int n)
+    public void AddTpArrow(int boughtAmount)
     {
-        arrowCount[1] += n;
+        arrowCount[1] += boughtAmount;
     }
 
-    public void AddFireArrow(int n)
+    public void AddFireArrow(int boughtAmount)
     {
-        arrowCount[2] += n;
+        arrowCount[2] += boughtAmount;
     }
 
-    public void AddFreezeArrow(int n)
+    public void AddFreezeArrow(int boughtAmount)
     {
-        arrowCount[3] += n;
+        arrowCount[3] += boughtAmount;
     }
 
-    public void AddHealing(int n)
+    public void AddHealing(int boughtAmount)
     {
-        HealthPotionCount += n;
+        HealthPotionCount += boughtAmount;
     }
 
-    public void AddCoin(int n)
+    public void AddCoin(int boughtAmount)
     {
-        coins += n;
+        coins += boughtAmount;
     }
 }
