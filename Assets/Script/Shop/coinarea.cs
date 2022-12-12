@@ -13,55 +13,39 @@ public class coinarea : MonoBehaviour
         if (collider.gameObject.tag == "Money_1")
         {
             getmoney += 1;
-            Destroy(collider.gameObject, 0);
+            Destroy(collider.gameObject, 1.5f);
+        }
+        else if (collider.gameObject.tag == "Money_10")
+        {
+            getmoney += 10;
+            Destroy(collider.gameObject,1.5f);
         }
         else if (collider.gameObject.tag == "Money_100")
         {
             getmoney += 100;
-            Destroy(collider.gameObject, 0);
-        }
-        else if (collider.gameObject.tag == "Money_10000")
-        {
-            getmoney += 10000;
-            Destroy(collider.gameObject, 0);
+            Destroy(collider.gameObject, 1.5f);
         }
         Debug.Log(getmoney);
     }
 
-
-    void OnCollisionStay(Collision collisionInfo)
+    public int FindItem(string x)
     {
-        // Debug-draw all contact points and normals
-        foreach (ContactPoint contact in collisionInfo.contacts)
+        int number = -1;
+        for (int a = 0; a < 6; a++)
         {
-            Debug.DrawRay(contact.point, contact.normal * 10, Color.white);
-        }
-    }
-
-
-
-
-    void OnTriggerExit(Collider collider) {
-        if (collider.gameObject.tag == "Money_1")
-            getmoney -= 1;
-        else if (collider.gameObject.tag == "Money_100")
-            getmoney -= 100;
-        else if (collider.gameObject.tag == "Money_10000")
-            getmoney -= 10000;
-        Debug.Log(getmoney);
-    }
-
-    public void sell(int x) {
-        int number=-1;
-        for (int y = 0; y < 6; y++)
-        {
-            if (shop[y].price == x)
+            if (shop[a].name == x)
             {
-                number = y;
+                number = a;
                 break;
             }
             else number = -1;
         }
+        return number;
+    }
+
+    public void sell(string x) {
+        int number= FindItem(x);
+        
         if (number != -1) {
             if (getmoney >= shop[number].price)
             {
