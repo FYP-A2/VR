@@ -39,4 +39,34 @@ public class Inventory : MonoBehaviour
         else
             return null;
     }
+
+    public void AddArrow(int n)
+    {
+        arrowCount[0] += n;
+    }
+
+    public void AddTpArrow(int n)
+    {
+        arrowCount[1] += n;
+    }
+
+    public void AddFireArrow(int n)
+    {
+        arrowCount[2] += n;
+    }
+
+    public void AddFreezeArrow(int n)
+    {
+        arrowCount[3] += n;
+    }
+
+    public void AddHealing(int n)
+    {
+        HealthPotionCount += n;
+    }
+
+    public void AddCoin(int n)
+    {
+        coins += n;
+    }
 }
