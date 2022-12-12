@@ -72118,8 +72118,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ev: {fileID: 213673130}
   shop:
-  - name: 'Item 1 '
+  - name: Arrow
+    price: 1
+  - name: Fire Arrow
     price: 10
+  - name: Frezze Arrow
+    price: 15
+  - name: Teleport Arrow
+    price: 5
+  - name: Potion
+    price: 20
 --- !u!65 &1762899683
 BoxCollider:
   m_ObjectHideFlags: 0

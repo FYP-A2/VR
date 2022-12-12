@@ -28,17 +28,24 @@ public class coinarea : MonoBehaviour
         Debug.Log(getmoney);
     }
 
-    public void sell(int x) {
-        int number=-1;
-        for (int y = 0; y < 6; y++)
+    public int FindItem(string x)
+    {
+        int number = -1;
+        for (int a = 0; a < 6; a++)
         {
-            if (shop[y].price == x)
+            if (shop[a].name == x)
             {
-                number = y;
+                number = a;
                 break;
             }
             else number = -1;
         }
+        return number;
+    }
+
+    public void sell(string x) {
+        int number= FindItem(x);
+        
         if (number != -1) {
             if (getmoney >= shop[number].price)
             {
