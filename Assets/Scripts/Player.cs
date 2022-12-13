@@ -5,7 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int health;
+    public int healthMax;
     public float speed;
+    public GameUI1 gameUI1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +18,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameUI1.SetHealth((float)health / healthMax);
+
         if(health <= 0)
         {
             Dead();

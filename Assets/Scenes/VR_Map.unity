@@ -96354,8 +96354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315b78aed2d0bfc48bbfe6d67d63c612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 100
+  healthMax: 200
   speed: 1
+  gameUI1: {fileID: 2130110300}
 --- !u!136 &1955053005
 CapsuleCollider:
   m_ObjectHideFlags: 0

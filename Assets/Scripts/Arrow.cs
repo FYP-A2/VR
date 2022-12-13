@@ -58,7 +58,7 @@ public class Arrow : MonoBehaviour
                     m.TakeDamage((int)damage);
                     break;
                 case ArrowType.Teleport:
-                    teleportPlayer.transform.position = transform.position;
+                    teleportPlayer.transform.position = transform.position + new Vector3(0,4,0);
                     break;
                 case ArrowType.Fire:
                     m.TakeFire((int)damage);
@@ -79,7 +79,7 @@ public class Arrow : MonoBehaviour
         else if (collision.gameObject.tag == "Scene")
         {
             if (arrowType == ArrowType.Teleport)
-                teleportPlayer.transform.position = transform.position;
+                teleportPlayer.transform.position = transform.position + new Vector3(0, 4, 0);
 
             Debug.Log("Tp");
 
