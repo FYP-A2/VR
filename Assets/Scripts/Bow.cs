@@ -50,7 +50,7 @@ public class Bow : MonoBehaviour
     // PURPOSE: apply arrow.Shot()v*Power. Finally reset the holdStringObject.
     void ReleaseString()
     {
-        
+        GetComponent<AudioSource>().Play();
 
         //cal arrow speed and send to arrow
         if (arrow != null)
