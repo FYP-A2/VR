@@ -15,17 +15,17 @@ public class coinarea : MonoBehaviour
         if (collider.gameObject.tag == "Money_1")
         {
             getmoney += 1;
-            Destroy(collider.gameObject, 1.5f);
+            Destroy(collider.gameObject);
         }
         else if (collider.gameObject.tag == "Money_10")
         {
             getmoney += 10;
-            Destroy(collider.gameObject,1.5f);
+            Destroy(collider.gameObject);
         }
         else if (collider.gameObject.tag == "Money_100")
         {
             getmoney += 100;
-            Destroy(collider.gameObject, 1.5f);
+            Destroy(collider.gameObject);
         }
         Debug.Log(getmoney);
         gmoneyDisplay.text = "$" + getmoney;
