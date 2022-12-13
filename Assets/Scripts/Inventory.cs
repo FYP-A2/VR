@@ -65,6 +65,11 @@ public class Inventory : MonoBehaviour
         HealthPotionCount += boughtAmount;
     }
 
+    public void RemoveHealing(int boughtAmount)
+    {
+        HealthPotionCount -= boughtAmount;
+    }
+
     public void AddCoin(int boughtAmount)
     {
         coins += boughtAmount;

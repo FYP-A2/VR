@@ -60,7 +60,7 @@ public class coinarea : MonoBehaviour
                 switch (shop[number].name) {
                     case "Arrow": ev.GetComponent<Inventory>().AddArrow(1); break;
                     case "Fire Arrow": ev.GetComponent<Inventory>().AddFireArrow(1); break;
-                    case "Frezze Arrow": ev.GetComponent<Inventory>().AddFreezeArrow(1); break;
+                    case "Freeze Arrow": ev.GetComponent<Inventory>().AddFreezeArrow(1); break;
                     case "Teleport Arrow": ev.GetComponent<Inventory>().AddTpArrow(1); break;
                     case "Potion": ev.GetComponent<Inventory>().AddHealing(1); break;
                 }
