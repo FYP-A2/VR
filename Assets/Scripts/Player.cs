@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     public float speed;
     public GameUI1 gameUI1;
 
+    public GameObject board1;
+    public GameObject bow;
+    public GameObject boardGameOver;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,11 @@ public class Player : MonoBehaviour
 
     void Dead()
     {
+        boardGameOver.SetActive(true);
+
+        board1.SetActive(false);
+        bow.SetActive(false);
+
         Time.timeScale = 0;
     }
 }
